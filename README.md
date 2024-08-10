@@ -8,16 +8,16 @@ In a simple RDB-based web system, using sequential IDs for entities is not ideal
 
 This library provides a reversible transformation to obfuscate a uint64 into a hard-to-guess string. The resulting string ranges from a minimum of 7 to a maximum of 15 characters (or an array with a minimum of 4 bytes to a maximum of 9 bytes).
 
-To enhance human readability and obfuscate the ID further, the encoder utilizes a restricted character set based on base32 encoding. This avoids characters like "0" and "O", "1" and "I", and especially "Q" and "9", as these pairs are easily confused in pronunciation in Japanese.
-
-- up to 2^24-1 : 7
+- up to 2^24-1 : 7 chars
 - up to 2^32-1 : 8
 - up to 2^40-1 : 10
 - up to 2^48-1 : 12
 - up to 2^56-1 : 13
 - up to 2^64-1 : 15
 
-Example:
+To enhance human readability, the encoder utilizes a restricted character set based on base32 encoding. This avoids characters like "0" and "O", "1" and "I", and especially "Q" and "9", as these pairs are easily confused in pronunciation in Japanese ("kyu-").
+
+## Example
 
 | Code              | Decimal Value       | Hexadecimal Value |
 |-------------------|---------------------|-------------------|
@@ -30,6 +30,14 @@ Example:
 | 5EZH-4LSJ-TKRQ    | 18838586676582      | 0x112233445566    |
 | W43I-TY3I-MLSI-C  | 4822678189205111    | 0x11223344556677  |
 | VXQB-FS37-LKNN-HAA| 1234605616436508552 | 0x1122334455667788|
+
+## How to use
+
+TBD
+
+### options
+- change/remove delimiter character
+- keep enough string length for smaller values
 
 #### Learning
 
