@@ -1,14 +1,14 @@
 # intencoder-go
 
-An Uint64 encoder for sequenced ID
+A UInt64 obfuscation encoder for sequencial ID
 
 ## Motivation
 
 In a simple RDB-based web system, using sequential IDs for entities is not ideal. Such practice allows for the estimation of the business size and increases the risk of ID-guessing attacks.
 
-This library offers a reversible transformation that converts a uint64 into a hard-to-guess string ranging from a minimum of 7 to a maximum of 15 characters (or an array with a minimum of 4 bytes to a maximum of 9 bytes).
+This library provides a reversible transformation to obfuscate a uint64 into a hard-to-guess string. The resulting string ranges from a minimum of 7 to a maximum of 15 characters (or an array with a minimum of 4 bytes to a maximum of 9 bytes).
 
-To enhance human readability and because the original sequence usually falls within the uint32 range, the encoder generates a shorter string for smaller values:
+To enhance human readability and obfuscate the ID further, the encoder utilizes a restricted character set based on base32 encoding. This avoids characters like "0" and "O", "1" and "I", and especially "Q" and "9", as these pairs are easily confused in pronunciation in Japanese.
 
 - up to 2^24-1 : 7
 - up to 2^32-1 : 8
